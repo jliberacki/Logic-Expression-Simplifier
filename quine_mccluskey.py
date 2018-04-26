@@ -1,6 +1,7 @@
 from tools import * 
 
 def compare_values(x,y):
+    #compare two binary numbers with "-"
     for el_x, el_y in zip(x,y):
         if(el_x == '-' or el_x==el_y):
             continue
@@ -9,6 +10,7 @@ def compare_values(x,y):
     return True
     
 def parent_dec_value(values):
+    #find dec value to binary numbers with "-"
     output = []
     for value in values:
         tmp_bin = [0 for i in value]
@@ -21,12 +23,14 @@ def parent_dec_value(values):
     return output
 
 def group_expressions(values, variables_num):
+    #group according to number of 1
     output = [[] for i in range(variables_num + 1)]
     for value in values:
         output[value.count(1)].append(value)
     return output
 
 def search_prime(groups):
+    #returns prime values
     groups = remove_duplicates(groups)
     groups_numbers = parent_dec_value([subgroup for subgroup in groups if subgroup])
     primes = []
@@ -37,6 +41,7 @@ def search_prime(groups):
     return primes
 
 def simplify_values(x, y):
+    #merge two values that has 1 diffrence
     diff_control=0
     output = []
     for el_x, el_y in zip(x, y):
@@ -51,6 +56,7 @@ def simplify_values(x, y):
         return []
 
 def qm(values, prime_values, variables_num):
+    #Quine-McCluskey algorithm
     assigned_groups = group_expressions(values, variables_num)
     merged_groups = []
     not_prime_v = []
@@ -73,6 +79,7 @@ def qm(values, prime_values, variables_num):
         return qm(merged_groups, prime_values, variables_num)
 
 def get_result(groups, vars):
+    #generates final result
     result = []
     for element in groups:
         for var, token in zip(vars, element):

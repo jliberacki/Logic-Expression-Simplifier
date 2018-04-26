@@ -5,6 +5,7 @@ operators = {'~': 4,'&': 3, '>': 3, '^': 2, '=': 2, '|': 1, '(':0,')':None}
 
 
 def is_logic(expr):
+    #checks if the expr is correct
     next_char=variables+'('+'~'
     bracket_control=0
     operators_str=''.join(operators.keys())
@@ -76,6 +77,7 @@ def evaluete_expresion(rpn):
  
 
 def add_one(bin_num):
+    #add one to binary number in list
     length=len(bin_num)
     for i in range(length):
         if bin_num[length-i-1]==0:
@@ -107,6 +109,7 @@ def remove_duplicates(list):
     return output
 
 def bin_to_dec(bin_num):
+    #convert binary number in list to decimal value
     bin_num = [str(i) for i in bin_num]
     num_str=''.join(bin_num)
     return int(num_str,2)
